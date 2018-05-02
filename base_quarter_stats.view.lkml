@@ -64,6 +64,7 @@ view: account_quarter_stats {
 
   derived_table: {
     persist_for: "24 hours"
+    indexes: ["_data_quarter", "external_customer_id"]
     explore_source: master_stats {
       column: _data_quarter {}
       column: external_customer_id {}
@@ -119,6 +120,7 @@ view: campaign_quarter_stats {
 
   derived_table: {
     persist_for: "24 hours"
+    indexes: ["_data_quarter", "campaign_id", "external_customer_id"]
     explore_source: master_stats {
       column: _data_quarter {}
       column: campaign_id {}
@@ -256,7 +258,7 @@ view: campaign_budget_stats {
   measure: count_constrained_budget_days {
     type: count_distinct
     description: "Days with daily spend within 20% of campaign budget"
-    sql:  (CAST(${_data_raw} as STRING) + CAST(${budget_id} as STRING))  ;;
+    sql:  (CAST(${_data_raw} AS VARCHAR) + CAST(${budget_id} AS VARCHAR))  ;;
     filters: {
       field: constrained_budget
       value: "yes"

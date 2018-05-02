@@ -4,7 +4,7 @@ view: ad_criterion_base {
   dimension: unique_key {
     type:  string
     hidden: yes
-    sql: (CAST(${ad_group_id} AS STRING) + CAST(${criterion_id} AS STRING)) ;;
+    sql: (CAST(${ad_group_id} AS VARCHAR) + CAST(${criterion_id} AS VARCHAR)) ;;
   }
 }
 
@@ -580,7 +580,7 @@ view: audience {
     type: string
     primary_key: yes
     hidden: yes
-    sql: (CAST(${ad_group_id} AS STRING) + CAST(${criterion_id} AS STRING)) ;;
+    sql: (CAST(${ad_group_id} AS VARCHAR) + CAST(${criterion_id} AS VARCHAR)) ;;
   }
 
   dimension: ad_group_id {

@@ -9,7 +9,6 @@ include: "*.explore"
 # include all the dashboards
 include: "*.dashboard"
 
-
 explore: master_stats {
   persist_for: "24 hours"
   label: "Ad Stats"
