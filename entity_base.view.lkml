@@ -58,7 +58,7 @@ view: base {
   dimension: current_day_of_quarter {
     hidden: yes
     type:  number
-    sql: DATEDIFF(DAY, GETDATE() , DATEPART(QUARTER, GETDATE() )) ;;
+    sql: (DATEDIFF(DAY,DATEADD(QUARTER,DATEDIFF(QUARTER,0,GETDATE()),0),GETDATE()) + 1)  ;;
   }
 
   dimension: less_than_current_day_of_quarter {
